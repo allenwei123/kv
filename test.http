@@ -1,0 +1,28 @@
+POST http://localhost:3000/api/admin/updated HTTP/1.1
+content-type: application/json
+
+{
+    "honeNumber":"15790000000",
+    "sex":0
+}
+
+###
+//注册
+POST http://localhost:3000/api/admin/register HTTP/1.1
+content-type: application/json
+
+{
+  "result": [
+    ["张三", "23"],
+    ["李四", "25"]
+  ]
+}
+
+###
+//登录
+POST http://localhost:3000/api/admin/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "123"
+}
