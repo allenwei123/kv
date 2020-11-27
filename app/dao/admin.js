@@ -13,9 +13,9 @@ class AdminDao {
     })
   }
   // 更新管理员
-  static async updated(age,name) {
+  static async updated(id,name) {
    return new Promise((reslove) => {
-    const sql =  `UPDATE person SET name = '${name}' WHERE age = '${age}'`;
+    const sql =  `UPDATE person SET name = '${name}' WHERE userid = '${id}'`;
       connection.query(sql,(err, result) => {
         if (err) throw err;
         reslove(result)

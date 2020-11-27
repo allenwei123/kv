@@ -6,7 +6,7 @@ class InitManager {
     // 入口方法
     InitManager.app = app;
     InitManager.initLoadRouters()
-    // InitManager.loadHttpException()
+    InitManager.loadHttpException()
     InitManager.loadConfig()
   }
 

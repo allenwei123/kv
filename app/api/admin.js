@@ -2,8 +2,10 @@ const Router = require('koa-router')
 const {Resolve} = require('../lib/helper');
 const {AdminDao} = require('../dao/admin');
 const {LoginManager} = require('../service/login');
+const {Auth} = require('../../middlewares/auth');
 
 const res = new Resolve();
+const AUTH_ADMIN = 16;
 
 const router = new Router({
   prefix: '/api/admin'
@@ -13,32 +15,25 @@ const router = new Router({
 router.post('/login', async (ctx) => {
   const { username } = ctx.request.body
   const result = await LoginManager.adminLogin(username)
-  console.log('result:', result)
-  ctx.body = res.json({
-    code: 200,
-    msg: '成功',
-    result
-  });
+  if (result) {
+    ctx.body = res.success(result,'登录成功')
+  } else {
+    ctx.body = res.json(null, '用户不存在')
+  }
 })
 
 // 管理员注册
 router.post('/register', async (ctx) => {
   const { result } = ctx.request.body
   await AdminDao.inner(result)
-  ctx.body = res.json({
-    code: 200,
-    msg: '注册成功'
-  });
+  ctx.body = res.success(result,'注册成功');
 })
 
 // 管理员修改
-router.post('/updated',(ctx, next) => {
-  next()
-}, async (ctx) => {
-  // const { age, name } = ctx.request.body
-  const result = await AdminDao.updated(12,'新的名字')
-  console.log(result)
-  ctx.body = res.json(ctx.request);
+router.post('/updated', new Auth(AUTH_ADMIN).m, async (ctx) => {
+  const { id, name } = ctx.request.body
+  await AdminDao.updated(id, name)
+  ctx.body = res.success(null,'修改成功');
 })
 
 

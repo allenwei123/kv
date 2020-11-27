@@ -1,9 +1,12 @@
+###
+// 更新数据
 POST http://localhost:3000/api/admin/updated HTTP/1.1
 content-type: application/json
+Authorization: Basic ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFhV1FpT2pFc0luTmpiM0JsSWpveE5pd2lhV0YwSWpveE5qQTJORFl4T0RJd0xDSmxlSEFpT2pFMk1EWTBOalUwTWpCOS4xSS1KS0hMOG5zbFY1OFUzMHRTOWQ2ckdQa3B1aU9wNjZIN2VhcEFOVi1nOg
 
 {
-    "honeNumber":"15790000000",
-    "sex":0
+    "name":"python3.8",
+    "id": 1
 }
 
 ###
@@ -24,5 +27,39 @@ POST http://localhost:3000/api/admin/login HTTP/1.1
 content-type: application/json
 
 {
-  "username": "123"
+  "username": "python3.8"
+}
+
+###
+# 新增文章
+POST http://localhost:3000/api/article/create HTTP/1.1
+content-type: application/json
+Authorization: Basic ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFhV1FpT2pFc0luTmpiM0JsSWpveE5pd2lhV0YwSWpveE5qQTJORFkxTmpReUxDSmxlSEFpT2pFMk1EWTFOVEl3TkRKOS5fWHl1cUZHREdaa1JzbUxtZmEzb0ZKc05Nbk9yTFNPLU5UYVM4dlY2QWJzOg==
+
+{
+  "title": "测试数据",
+  "author": "4",
+  "content": "发免费 i 啊代码搭配发达的发明地方",
+  "description": "描述一下",
+  "keyword": "免费",
+  "cover": "文章封面",
+  "browse": 30
+}
+
+###
+# 文章list
+GET http://localhost:3000/api/article/list?current=1 HTTP/1.1
+content-type: application/json
+Authorization: Basic ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFhV1FpT2pFc0luTmpiM0JsSWpveE5pd2lhV0YwSWpveE5qQTJORFkxTmpReUxDSmxlSEFpT2pFMk1EWTFOVEl3TkRKOS5fWHl1cUZHREdaa1JzbUxtZmEzb0ZKc05Nbk9yTFNPLU5UYVM4dlY2QWJzOg==
+
+{}
+
+###
+# 删除文章
+POST http://localhost:3000/api/article/delete HTTP/1.1
+content-type: application/json
+Authorization: Basic ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFhV1FpT2pFc0luTmpiM0JsSWpveE5pd2lhV0YwSWpveE5qQTJORFkxTmpReUxDSmxlSEFpT2pFMk1EWTFOVEl3TkRKOS5fWHl1cUZHREdaa1JzbUxtZmEzb0ZKc05Nbk9yTFNPLU5UYVM4dlY2QWJzOg==
+
+{
+  "id": 6
 }
